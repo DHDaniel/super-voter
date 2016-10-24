@@ -1,0 +1,24 @@
+{
+  "name": "voter",
+  "version": "1.0.0",
+  "description": "A voting app where you can create your own polls and vote on other people's",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Hernandez",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DHDaniel/super-voter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DHDaniel/super-voter/issues"
+  },
+  "homepage": "https://github.com/DHDaniel/super-voter#readme",
+  "dependencies": {
+    "consolidate": "^0.14.1",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.11"
+  }
+}
