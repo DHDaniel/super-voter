@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const passport_local = require("passport-local");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session); // for storing sessions in the database
+const password = require("password-hash-and-salt");
 
 
 function setUp(app, models, passport) {
@@ -20,7 +21,7 @@ function setUp(app, models, passport) {
       collection : "sessions"
     }),
     cookie : {
-      maxAge : 7 * 24 * 60 * 60 * 10 // should last a week
+      maxAge : 60 * 1000 // should last a minute
     }
   }));
 
@@ -30,20 +31,29 @@ function setUp(app, models, passport) {
 
   // configuring passport for authentication by local username and password
   passport.use(new passport_local(
-    function (username, password, done) {
+    function (username, passw, done) {
       models.User.where({ username : username}).findOne().exec(function (err, user) {
 
         if (err) return done(err);
 
-        if (user === null) {
+        if (!user) {
           return done(null, false, {message : "User does not exist."});
         }
 
-        if (user.password != password) {
-          return done(null, false, {message : "Password is incorrect."});
-        }
+        // verifying hash
+        password(passw).verifyAgainst(user.password, function (err, verified) {
 
-        return done(null, user);
+          if (err) return done(err);
+
+          if (verified) {
+            return done(null, user);
+          }
+
+          if (verified === false) {
+            return done(null, false, {message : "Password is incorrect."});
+          }
+
+        });
       });
     }
   ));
