@@ -5,7 +5,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session); // for storing sessions in the database
 
 
-function setUp(app, db, passport) {
+function setUp(app, models, passport) {
 
   app.use(cookieParser());
 
@@ -31,16 +31,14 @@ function setUp(app, db, passport) {
   // configuring passport for authentication by local username and password
   passport.use(new passport_local(
     function (username, password, done) {
-      db.collection("users").findOne({ username : username}, function (err, user) {
+      models.User.where({ username : username}).findOne().exec(function (err, user) {
 
         if (err) return done(err);
 
-        console.log(user);
         if (user === null) {
           return done(null, false, {message : "User does not exist."});
         }
 
-        console.log(user.password, password);
         if (user.password != password) {
           return done(null, false, {message : "Password is incorrect."});
         }
@@ -58,7 +56,7 @@ function setUp(app, db, passport) {
 
   passport.deserializeUser(function (id, done) {
     // here, the object ID is used to find the relevant information about the user, by calling the database
-    db.collection("users").findOne({ _id : id }, function (err, user) {
+    models.User.findById(id).exec(function (err, user) {
       if (err) done(err);
 
       return done(null, user);
