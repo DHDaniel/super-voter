@@ -3,11 +3,12 @@ const passport = require("passport");
 
 const myPassport = require("./passport-setup.js");
 const signup = require("../controllers/signup.server.js");
+const logout = require("../controllers/logout.server.js");
 
 module.exports = function (app, models) {
 
   // configuring passport
-  myPassport(app, models, passport);  
+  myPassport(app, models, passport);
 
   app.route("/login")
 
@@ -64,4 +65,9 @@ module.exports = function (app, models) {
         });
 
       });
+
+
+  app.route("/logout")
+
+      .post(logout);
 }

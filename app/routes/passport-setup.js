@@ -12,7 +12,7 @@ function setUp(app, models, passport) {
 
   // setting up sessions. maxAge is the amount of time that the cookie will last
   app.use(session({
-    secret : process.env.SESSION_SECRET,
+    secret : process.env.PASSPORT_SESSION_SECRET,
     name : "SessionID",
     saveUninitialized : false,
     resave : false,
