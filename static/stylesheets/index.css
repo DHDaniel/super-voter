@@ -1,0 +1,6 @@
+/* line 2, ../sass/index.scss */
+#landing {
+  height: 200px;
+  display: flex;
+  align-items: center;
+}

@@ -10,10 +10,22 @@ module.exports = function (app, models) {
   // configuring passport
   myPassport(app, models, passport);
 
+  app.route("/")
+
+      .get(function (req, res) {
+        res.render("index", {
+          title : "Voter - what's YOUR opinion?",
+          styles : [
+            "/stylesheets/index.css"
+          ],
+          user : req.user
+        });
+      });
+
   app.route("/login")
 
       .get(function (req, res) {
-        res.render("login", { name : (req.user) ? req.user.username : null});
+        res.render("login", {layout : false});
       })
 
       .post(function (req, res, next) {
@@ -23,6 +35,7 @@ module.exports = function (app, models) {
 
           if (err) return next(err);
 
+          // displaying error messages
           if (user === false) {
             var errInfo = info.message;
             return res.render("login", {error : errInfo});
@@ -31,17 +44,13 @@ module.exports = function (app, models) {
           // manually logging in user
           req.login(user, function (err) {
             if (err) return next(err);
-            return res.redirect("/login");
+            return res.redirect("/");
           });
 
         })(req, res, next);
       });
 
   app.route("/signup")
-
-      .get(function (req, res) {
-        res.render("signup", {});
-      })
 
       .post(function (req, res) {
 
@@ -56,10 +65,10 @@ module.exports = function (app, models) {
           if (user) {
             req.login(user, function (err) {
               if (err) throw err;
-              return res.redirect("/login");
+              return res.redirect("/");
             })
           } else {
-            res.render("signup", {error : info.message});
+            res.render("login", {error : info.message});
           }
 
         });

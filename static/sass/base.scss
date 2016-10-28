@@ -1,0 +1,57 @@
+
+/* Importing */
+@import url('https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro');
+
+/* Variables */
+
+$mobile-breakpoint : 435px;
+
+$theme-color : #3F51B5;
+$theme-color-dark : #303F9F;
+$theme-color-light : #C5CAE9;
+
+$theme-accent-color : #FF5252;
+$text-color : #212121;
+$text-color-light : #FFFFFF;
+
+$header-font: "Raleway", sans-serif;
+$text-font : "Source Sans Pro", sans-serif;
+
+
+/* Styles */
+
+html, body {
+  color: $text-color;
+  font-family: $text-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+}
+
+nav {
+
+  &.navbar {
+    border-radius: 0px;
+    background-color: $theme-color-dark;
+    color: $text-color-light;
+
+    a {
+      color: $text-color-light;
+      &:hover, &:visited {
+        color: $text-color-light;
+      }
+    }
+  }
+
+  #sign-up {
+    background-color: $theme-accent-color;
+  }
+
+  .navbar-brand {
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+}

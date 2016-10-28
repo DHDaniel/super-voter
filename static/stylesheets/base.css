@@ -1,0 +1,38 @@
+/* Importing */
+@import url("https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro");
+/* Variables */
+/* Styles */
+/* line 23, ../sass/base.scss */
+html, body {
+  color: #212121;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* line 28, ../sass/base.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+/* line 34, ../sass/base.scss */
+nav.navbar {
+  border-radius: 0px;
+  background-color: #303F9F;
+  color: #FFFFFF;
+}
+/* line 39, ../sass/base.scss */
+nav.navbar a {
+  color: #FFFFFF;
+}
+/* line 41, ../sass/base.scss */
+nav.navbar a:hover, nav.navbar a:visited {
+  color: #FFFFFF;
+}
+/* line 47, ../sass/base.scss */
+nav #sign-up {
+  background-color: #FF5252;
+}
+/* line 52, ../sass/base.scss */
+nav .navbar-brand img {
+  height: 100%;
+  width: auto;
+}
