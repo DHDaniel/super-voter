@@ -2,36 +2,42 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro");
 /* Variables */
 /* Styles */
-/* line 23, ../sass/base.scss */
+/* line 6, ../sass/base.scss */
 html, body {
   color: #212121;
   font-family: "Source Sans Pro", sans-serif;
 }
 
-/* line 28, ../sass/base.scss */
+/* line 11, ../sass/base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
 }
 
-/* line 34, ../sass/base.scss */
+/* line 17, ../sass/base.scss */
 nav.navbar {
   border-radius: 0px;
   background-color: #303F9F;
   color: #FFFFFF;
 }
-/* line 39, ../sass/base.scss */
+/* line 22, ../sass/base.scss */
 nav.navbar a {
   color: #FFFFFF;
+  cursor: pointer;
 }
-/* line 41, ../sass/base.scss */
+/* line 25, ../sass/base.scss */
 nav.navbar a:hover, nav.navbar a:visited {
   color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.2);
 }
-/* line 47, ../sass/base.scss */
+/* line 31, ../sass/base.scss */
+nav.navbar .navbar-text {
+  color: #ddd;
+}
+/* line 36, ../sass/base.scss */
 nav #sign-up {
   background-color: #FF5252;
 }
-/* line 52, ../sass/base.scss */
+/* line 41, ../sass/base.scss */
 nav .navbar-brand img {
   height: 100%;
   width: auto;

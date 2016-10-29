@@ -1,0 +1,64 @@
+
+@import "variables";
+
+
+html, body {
+  color: $text-color;
+  font-family: $text-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+}
+
+#login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+  background-color: $theme-color;
+
+  #login {
+    text-align: center;
+    background-color: white;
+    box-shadow: 0px 0px 10px black;
+    padding: 40px 20px;
+    width: 80%;
+    max-width: 420px;
+
+    img {
+      margin: auto;
+      height: 60px;
+      width: auto;
+      max-width: 200px;
+    }
+
+    /* Error text */
+    p {
+      color: red;
+      font-size: 18px;
+    }
+
+    form {
+      text-align: left;
+      input, label {
+        display: block;
+        width: 100%;
+      }
+      input {
+        border-radius: 5px;
+        border: 1px solid #fee;
+        padding: 10px 5px;
+      }
+      label {
+        font-size: 16px;
+      }
+      button {
+        margin: 10px 10px 0px 10px;
+      }
+    }
+
+  }
+}

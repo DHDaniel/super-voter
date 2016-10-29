@@ -47,8 +47,18 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{#if user}}
+          <li><p class="navbar-text">
+            Signed in as <em>{{user.username}}</em>
+          </p></li>
+          <li><a href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
           <li><a href="#">Dashboard</a></li>
-          <li><a href="/signout" class="log-in-out">Sign out</a></li>
+          <li>
+            <a onclick="document.getElementById('logout-form').submit();">Sign Out</a>
+            {{! Hidden form that is processed to sign out user}}
+            <form id="logout-form" method="post" action="/logout" style="display: none;">
+              <input type="hidden" name="" value="" />
+            </form>
+          </li>
           {{else}}
           <li><a href="/login" class="log-in-out">Log In</a></li>
           <li><a href="/login" id="sign-up">Sign Up</a></li>

@@ -21,7 +21,7 @@ function setUp(app, models, passport) {
       collection : "sessions"
     }),
     cookie : {
-      maxAge : 60 * 1000 // should last a minute
+      maxAge : 7 * 24 * 60 * 60 * 1000 // should last a week
     }
   }));
 

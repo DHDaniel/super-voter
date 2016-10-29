@@ -38,7 +38,7 @@ module.exports = function (app, models) {
           // displaying error messages
           if (user === false) {
             var errInfo = info.message;
-            return res.render("login", {error : errInfo});
+            return res.render("login", {error : errInfo, layout : false});
           }
 
           // manually logging in user
@@ -66,9 +66,9 @@ module.exports = function (app, models) {
             req.login(user, function (err) {
               if (err) throw err;
               return res.redirect("/");
-            })
+            });
           } else {
-            res.render("login", {error : info.message});
+            res.render("login", {error : info.message, layout : false});
           }
 
         });

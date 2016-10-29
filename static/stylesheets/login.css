@@ -1,0 +1,68 @@
+/* Importing */
+@import url("https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro");
+/* Variables */
+/* line 5, ../sass/login.scss */
+html, body {
+  color: #212121;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* line 10, ../sass/login.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+/* line 14, ../sass/login.scss */
+#login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #3F51B5;
+}
+/* line 23, ../sass/login.scss */
+#login-wrapper #login {
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 0px 10px black;
+  padding: 40px 20px;
+  width: 80%;
+  max-width: 420px;
+  /* Error text */
+}
+/* line 31, ../sass/login.scss */
+#login-wrapper #login img {
+  margin: auto;
+  height: 60px;
+  width: auto;
+  max-width: 200px;
+}
+/* line 39, ../sass/login.scss */
+#login-wrapper #login p {
+  color: red;
+  font-size: 18px;
+}
+/* line 44, ../sass/login.scss */
+#login-wrapper #login form {
+  text-align: left;
+}
+/* line 46, ../sass/login.scss */
+#login-wrapper #login form input, #login-wrapper #login form label {
+  display: block;
+  width: 100%;
+}
+/* line 50, ../sass/login.scss */
+#login-wrapper #login form input {
+  border-radius: 5px;
+  border: 1px solid #fee;
+  padding: 10px 5px;
+}
+/* line 55, ../sass/login.scss */
+#login-wrapper #login form label {
+  font-size: 16px;
+}
+/* line 58, ../sass/login.scss */
+#login-wrapper #login form button {
+  margin: 10px 10px 0px 10px;
+}
