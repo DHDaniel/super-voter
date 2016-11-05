@@ -7,7 +7,8 @@ var pollSchema = mongoose.Schema({
     name : String,
     votes : Number
   }],
-  shortid : String
+  shortid : String,
+  date_created : Date
 });
 
 module.exports = pollSchema;

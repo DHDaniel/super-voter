@@ -79,4 +79,19 @@ module.exports = function (app, models) {
   app.route("/logout")
 
       .post(logout);
+
+  app.route("/dashboard")
+
+      .get(function (req, res) {
+        res.render("dashboard", {
+          title : "My Dashboard",
+          styles : [
+            "/stylesheets/dashboard.css"
+          ],
+          scripts : [
+            "/scripts/dist/app.js"
+          ],
+          user : req.user
+        })
+      });
 }

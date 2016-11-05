@@ -51,7 +51,7 @@
             Signed in as <em>{{user.username}}</em>
           </p></li>
           <li><a href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
-          <li><a href="#">Dashboard</a></li>
+          <li><a href="/dashboard">Dashboard</a></li>
           <li>
             <a onclick="document.getElementById('logout-form').submit();">Sign Out</a>
             {{! Hidden form that is processed to sign out user}}
@@ -77,6 +77,9 @@
     src="https://code.jquery.com/jquery-2.2.4.min.js"
     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
     crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 {{#if scripts}}
 

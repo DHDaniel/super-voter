@@ -32,6 +32,8 @@ db.once("open", function () {
 
   // for serving static files like CSS and images
   app.use(express.static( process.cwd() + "/static/"));
+  // JS
+  app.use(express.static( process.cwd() + "/app/controllers/"));
 
   /* for rendering views using handlebars. This configuration allows for layouts
   and partials to be used - allowing for template inheritance. Quite useful. QUITE useful.
