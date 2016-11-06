@@ -4,11 +4,17 @@ const passport = require("passport");
 const myPassport = require("./passport-setup.js");
 const signup = require("../controllers/signup.server.js");
 const logout = require("../controllers/logout.server.js");
+const getpolls = require("../controllers/userpolls.server.js");
+const createpoll = require("../controllers/createpoll.server.js");
 
 module.exports = function (app, models) {
 
   // configuring passport
   myPassport(app, models, passport);
+
+  /*
+  Home page - this is the default homepage for voter.
+  */
 
   app.route("/")
 
@@ -22,6 +28,12 @@ module.exports = function (app, models) {
         });
       });
 
+
+  /*
+  login
+  GET - displays login/signup form to user.
+  POST - sends data to server about logging in. If credentials are correct, user is authenticated.
+  */
   app.route("/login")
 
       .get(function (req, res) {
@@ -50,6 +62,10 @@ module.exports = function (app, models) {
         })(req, res, next);
       });
 
+  /*
+  signup
+  POST - sends data to create a new user to server
+  */
   app.route("/signup")
 
       .post(function (req, res) {
@@ -75,23 +91,74 @@ module.exports = function (app, models) {
 
       });
 
-
+  /*
+  logout
+  POST - logs out the user, redirects to home page
+  */
   app.route("/logout")
 
       .post(logout);
 
+  /* dashboard
+  GET - sends the user (if authenticated) to their dashboard.
+  */
   app.route("/dashboard")
 
       .get(function (req, res) {
-        res.render("dashboard", {
-          title : "My Dashboard",
-          styles : [
-            "/stylesheets/dashboard.css"
-          ],
-          scripts : [
-            "/scripts/dist/app.js"
-          ],
-          user : req.user
-        })
+        if (req.user) {
+          res.render("dashboard", {
+            title : "My Dashboard",
+            styles : [
+              "/stylesheets/dashboard.css"
+            ],
+            scripts : [
+              "https://cdnjs.cloudflare.com/ajax/libs/reqwest/2.0.5/reqwest.min.js",
+              "/scripts/dist/app.js"
+            ],
+            user : req.user
+          });
+        } else {
+          res.redirect("/");
+        }
       });
+
+
+
+
+  /*
+  ============================
+  API ROUTES
+  ============================
+  */
+
+  /*
+  Return all of the current polls of signed in users
+  */
+  app.route("/api/user/polls")
+
+      .get(function (req, res) {
+        // if authenticated
+        if (req.user) {
+          getpolls(models, req.user.username, function(err, polls) {
+            if (err) throw err;
+            res.json(polls);
+            res.end();
+          });
+        } else {
+          // send error
+          res.status(401).end("401 Unauthorized.");
+        }
+      });
+
+  app.route("/api/user/createpoll")
+
+      .post(function (req, res) {
+        createpoll(models, req.user, req.body, function (err, success) {
+          if (err) throw err;
+
+          if (success) {
+            res.redirect("/dashboard");
+          } 
+        });
+      })
 }
