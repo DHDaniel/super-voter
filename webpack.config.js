@@ -18,4 +18,5 @@ module.exports = {
         path: './static/scripts/dist',
         filename: 'app.js'
   },
+  devtool: "source-map"
 }

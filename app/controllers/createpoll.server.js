@@ -24,13 +24,13 @@ module.exports = function (models, user, form, callback) {
     date_created : today
   });
 
+  console.log(user);
+
   newPoll.save(function (err) {
     if (err) return callback(err);
 
-    var pollid = newPoll._id;
-
     models.User.update({ username : user.username }, {
-      $push : { polls : pollid}
+      $push : { polls : newPoll._id}
     }, function (err, data) {
       if (err) return callback(err);
 
