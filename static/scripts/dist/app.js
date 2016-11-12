@@ -167,6 +167,13 @@
 	      });
 	    }
 	  }, {
+	    key: 'handleCreateClick',
+	    value: function handleCreateClick() {
+	      this.setState({
+	        display: _react2.default.createElement(_createPoll2.default, null) // setting the "create form" display on click
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this4 = this;

@@ -66,6 +66,11 @@ class App extends React.Component {
     });
   }
 
+  handleCreateClick() {
+    this.setState({
+      display : <PollForm /> // setting the "create form" display on click
+    });
+  }
 
   render () {
     return(
