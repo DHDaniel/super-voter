@@ -22,7 +22,7 @@ module.exports = function (models, newUser, callback) {
   models.User.findOne({ username : name }, function (err, user) {
 
     // if user DOES NOT already exist
-    if (!user) {
+    if (!user && name !== "" && passw !== "") {
 
       // hashing password for secure storage.
       var hashPass = password(passw).hash(function (err, hash) {
@@ -45,8 +45,17 @@ module.exports = function (models, newUser, callback) {
       });
 
     } else {
+
+      if (name == "") {
+        return callback(null, false, {message : "Please enter a username"});
+      }
+
+      if (passw == "") {
+        return callback(null, false, {message : "Please enter a password"})
+      }
+
       // if username is taken
-      return callback(null, false, {message : "Username is taken."});
+      return callback(null, false, {message : "Username is taken"});
     }
   });
 }

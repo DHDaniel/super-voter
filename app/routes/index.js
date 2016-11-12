@@ -76,7 +76,7 @@ module.exports = function (app, models) {
         }
 
         signup(models, newUser, function (err, user, info) {
-          if (err) throw err;
+          if (err) console.log(err);
 
           if (user) {
             req.login(user, function (err) {
@@ -158,7 +158,7 @@ module.exports = function (app, models) {
 
           if (success) {
             res.redirect("/dashboard");
-          } 
+          }
         });
       })
 }
